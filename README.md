@@ -6,6 +6,13 @@
 
 [满楼水平的百度百科词条](http://baike.baidu.com/item/满楼水平)
 
+## 用法
+
+```shell
+python3 -m pip install -r requirements.txt
+python3 main.py
+```
+
 ## 成果
 
 [700部的数据](mlsp-result/result.json)
