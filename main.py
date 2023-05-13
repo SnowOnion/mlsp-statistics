@@ -1,5 +1,5 @@
+#!/usr/bin/env python3
 # coding=utf8
-# python 3
 
 import requests
 from bs4 import BeautifulSoup as bs
@@ -45,7 +45,7 @@ PATH_OF_SONION_CONVERTED_RESULT = 'mlsp-result/result-converted-for-lee.json'
 
 
 def url_for(page):
-    return 'http://i.youku.com/i/UMjg4MjQ1MzQ0/videos?order=1&page=%d' % page
+    return 'https://i.youku.com/i/UMjg4MjQ1MzQ0/videos?order=1&page=%d' % page
 
 
 def path_for_html(page):
@@ -65,7 +65,7 @@ def path_for_converted_result():
 
 def prepare_dir():
     if not os.path.exists(PATH_OF_HTML_TMP):
-        os.mkdir(PATH_OF_HTML_TMP)
+        os.makedirs(PATH_OF_HTML_TMP)
 
 
 def download():
@@ -137,23 +137,7 @@ def parse():
         # print("MLSP-%03d %-30s %s" % (i, r['title'], r['video_link']))
 
 
-def convert():
-    with open(path_for_raw_result(), 'r', encoding="utf-8") as fin:
-        json_str = fin.read()
-        raw_result = json.loads(json_str, encoding='utf-8')
-        converted_result = copy.deepcopy(raw_result)
-        converted_result['data'].
-        {
-            "update": raw_result['update'],
-            "data": list(map(
-                lambda x:,
-                raw_result['data']
-            ))
-        }
-
-
 if __name__ == '__main__':
     prepare_dir()
     download()
     parse()
-    convert()
